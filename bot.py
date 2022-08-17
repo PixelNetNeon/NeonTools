@@ -1,7 +1,5 @@
 from pydoc import doc
 import string
-#weather
-import python_weather
 #discord stuff
 import discord
 from discord.ext import commands
@@ -22,16 +20,22 @@ handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(me
 logger.addHandler(handler)
 import urllib.request
 
+####################################################################################
+# Command Prefix
+####################################################################################
+
 bot = commands.Bot(command_prefix='nt!')
+
+####################################################################################
+# Intents
+####################################################################################
 
 intents = discord.Intents.default()
 intents.members = True
-#intents.message_content = True
 
-#@bot.event
-#async def on_ready(self):
-#    print('Logged on as', self.user)
-
+####################################################################################
+# Bot events
+####################################################################################
 print('neontools is loading. please wait')
 @bot.event
 async def on_ready():
@@ -43,9 +47,16 @@ async def on_ready():
      
    
 
+####################################################################################
+# Commands
+####################################################################################
 @bot.command()
 async def ping(ctx):
-    await ctx.send('pong')
+    await ctx.send('pong :ping_pong:')
+
+@bot.command()
+async def opensource(ctx):
+    await ctx.send('Oh Yeah I Totally Forgot That I Am Open Source! Have A Link: https://github.com/PixelNetNeon/NeonTools')
 
 @bot.command()
 async def add(ctx, left: int, right: int):
@@ -82,6 +93,10 @@ async def profile(ctx, *, member: discord.Member = None):
     userAvatar = member.avatar_url
     await ctx.send(userAvatar)
 # im having a mac and cheese party and everyone is invited yayyyy
+
+####################################################################################
+# Run
+####################################################################################
 
 bot.run('yourid')
 
