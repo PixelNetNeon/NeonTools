@@ -1,3 +1,4 @@
+from lib2to3.pgen2 import token
 from pydoc import doc
 import string
 #discord stuff
@@ -8,8 +9,6 @@ from plyer import notification
 #python stuff idfk
 import asyncio
 import random
-# command line stuff
-from sys import exit
 #logging
 import discord
 import logging
@@ -19,6 +18,9 @@ handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w'
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 import urllib.request
+
+import os
+from dotenv import load_dotenv
 
 ####################################################################################
 # Command Prefix
@@ -55,13 +57,26 @@ async def ping(ctx):
     await ctx.send('pong :ping_pong:')
 
 @bot.command()
+async def server(ctx):
+    await ctx.send('Check https://github.com/PixelNetNeon/NeonTools/issues/7')
+
+@bot.command()
 async def opensource(ctx):
     await ctx.send('Oh Yeah I Totally Forgot That I Am Open Source! Have A Link: https://github.com/PixelNetNeon/NeonTools')
+
+@bot.command()
+async def about(ctx):
+    info=discord.Embed(title='NeonTools', description='The Offical NeonTools Discord Bot.', color=0xc9fbff)
+    await ctx.send(embed=info)
 
 @bot.command()
 async def add(ctx, left: int, right: int):
     """Adds two numbers together."""
     await ctx.send(left + right)
+
+####################################################################################
+# Fun Commands
+####################################################################################
 
 @bot.command()
 async def annoythedev(ctx):
@@ -72,12 +87,6 @@ async def annoythedev(ctx):
                     app_icon = None,
                     timeout= 10,
                     toast=False)
-
-@bot.command(description='For when you wanna settle the score some other way')
-async def choose(ctx, *choices: str):
-    """Chooses between multiple choices."""
-    await ctx.send(random.choice(choices))
-
 
 @bot.command()
 async def repeat(ctx, times: int, content='repeating...'):
@@ -94,9 +103,13 @@ async def profile(ctx, *, member: discord.Member = None):
     await ctx.send(userAvatar)
 # im having a mac and cheese party and everyone is invited yayyyy
 
+
 ####################################################################################
 # Run
 ####################################################################################
 
-bot.run('yourid')
+load_dotenv()
 
+token = os.getenv("DISCORD_TOKEN")
+
+bot.run(token)
