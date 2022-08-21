@@ -108,6 +108,8 @@ async def profile(ctx, *, member: discord.Member = None):
 # Run
 ####################################################################################
 
-bot.run('yourid')
+load_dotenv()
+
+token = os.getenv("DISCORD_TOKEN")
 
 bot.run(token)
