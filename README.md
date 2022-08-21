@@ -22,7 +22,11 @@ Type In This Command Into Your Terminal Or IDE Terminal
 python bot.py
 ```
 #### NeonTools Didn't Run!
-You Might Have Forgotten To Change The Bot Token. Open bot.py And Change 'yourid' To Your Bot's Token
+You Have To Create A .env File Containing This
+```
+DISCORD_TOKEN=yourtoken
+```
+And Replace ```yourtoken``` With Your Discord Bot's Token
 
 ### Running createjson.py
 This Isnt Required Yet :/
