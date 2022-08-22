@@ -127,8 +127,18 @@ async def space(ctx, *, arg):
         data = json.loads(text)
         user = data
 
-        info=discord.Embed(title='Current Number Of Astronauts In Space', description=user['number'], color=0x000000)
+        numberofpeopleformat = '{people} People Currently In Space Right Now'
+
+        info=discord.Embed(title='Current Number Of Astronauts In Space', description=numberofpeopleformat.format(people = user['number']), color=0x000000)
         info.set_footer(text='http://api.open-notify.org/astros.json')
+
+        #footer = user['number']
+
+        #for x in range(footer): #range(10):
+
+        #    info.add_field(name=user['name'], value='this is a value', inline=True)
+        #    #info.add_field(name='this is a field', value='this is a value', inline=True)
+
         await ctx.send(embed=info)
     else:
         await ctx.send('I Could Not Understand Your Request. Please Type In `nt!space iss` or `nt!space astros`')
