@@ -33,3 +33,32 @@ This Isnt Required Yet :/
 ```
 python createjson.py
 ```
+
+# Commands
+
+## Default Commands
+
+### nt!ping
+pong :ping_pong:
+### nt!server
+This Is Unfinished And The Bot Just Sends You To Issue #7
+### nt!opensource
+Bot Just Sends You A Link To This Github Repository
+### nt!about
+The Bot Will Reply In A Embed Of Info
+### nt!add
+Adds 2 Numbers Together
+
+## Fun Commands
+
+### nt!annoythedev
+Sends A Windows Notification To My Computer Running NeonTools (and that may get annoying :/ )
+### nt!profile
+Returns Your Or A Person's Discord Profile Picture
+## API [fun]
+### nt!space
+Gives Info About Space And The ISS
+#### nt!space iss
+Tells You The Location Of The ISS
+#### nt!space astros
+Tells You How Many People Are In Space (and hopefully tells you their names and what station)
