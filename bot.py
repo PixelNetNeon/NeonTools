@@ -1,3 +1,4 @@
+from cmath import inf
 from lib2to3.pgen2 import token
 from pydoc import doc
 import string
@@ -101,8 +102,36 @@ async def profile(ctx, *, member: discord.Member = None):
         member = ctx.message.author
     userAvatar = member.avatar_url
     await ctx.send(userAvatar)
-# im having a mac and cheese party and everyone is invited yayyyy
 
+####################################################################################
+# API [fun]
+####################################################################################
+
+import json, requests
+
+@bot.command()
+async def space(ctx, *, arg):
+    #print(ctx, arg)
+    if arg == 'iss':
+        url = requests.get("http://api.open-notify.org/iss-now.json")
+        text = url.text
+        data = json.loads(text)
+        user = data
+
+        info=discord.Embed(title='Current Position Of The ISS', description=user['iss_position'], color=0x000000)
+        info.set_footer(text='http://api.open-notify.org/iss-now.json')
+        await ctx.send(embed=info)
+    elif arg == 'astros':
+        url = requests.get("http://api.open-notify.org/astros.json")
+        text = url.text
+        data = json.loads(text)
+        user = data
+
+        info=discord.Embed(title='Current Number Of Astronauts In Space', description=user['number'], color=0x000000)
+        info.set_footer(text='http://api.open-notify.org/astros.json')
+        await ctx.send(embed=info)
+    else:
+        await ctx.send('I Could Not Understand Your Request. Please Type In `nt!space iss` or `nt!space astros`')
 
 ####################################################################################
 # Run
